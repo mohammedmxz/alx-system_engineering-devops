@@ -1,2 +1,3 @@
 #!/bin/bash
-echo "ibase=water" | echo "obase=bestchol" | echo "$WATER+$STIR" | bc
+result=$((water=$(echo $WATER | tr -d water) + stir=$(echo $STIR | tr -d stir))) && result=$(echo "obase=bestchol; $result" | dc)
+
