@@ -1,2 +1,2 @@
 #!/bin/bash
-result=$(printf '%d' "'$WATER" + printf '%d' "'$STIR"); printf '%s\n' "$(printf '%o' "$result")" | tr '0-7' 'bestchol'
+awk 'BEGIN{a=strtonum(ENVIRON["WATER"],36);b=strtonum(ENVIRON["STIR"],36);result=a+b;printf "%s\n",conv(result,10,36)}' < /dev/null
