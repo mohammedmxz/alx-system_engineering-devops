@@ -1,2 +1,2 @@
 #!/bin/bash
-result=$((water=$(echo $WATER | tr -d water) + stir=$(echo $STIR | tr -d stir))) && result=$(echo "obase=bestchol; $result" | dc)
+result=$(printf "%s\n%s" "$WATER" "$STIR" | awk '{ sum += $0 } END { printf "%s\n", sum }' | tr '0123456789' 'bestchol')
