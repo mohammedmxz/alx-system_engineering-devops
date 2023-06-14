@@ -1,2 +1,2 @@
 #!/bin/bash
-printf "%s\n" "$WATER" "$STIR" | awk '{sum += strtonum($0)} END {printf "%s\n", sum}'
+result=$(printf '%d' "'$WATER" + printf '%d' "'$STIR"); printf '%s\n' "$(printf '%o' "$result")" | tr '0-7' 'bestchol'
