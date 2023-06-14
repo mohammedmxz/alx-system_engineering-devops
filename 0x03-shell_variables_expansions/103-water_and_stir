@@ -1,3 +1,2 @@
 #!/bin/bash
 result=$((water=$(echo $WATER | tr -d water) + stir=$(echo $STIR | tr -d stir))) && result=$(echo "obase=bestchol; $result" | dc)
-
