@@ -1,2 +1,2 @@
 #!/bin/bash
-awk 'BEGIN{a=strtonum(ENVIRON["WATER"],36);b=strtonum(ENVIRON["STIR"],36);result=a+b;printf "%s\n",conv(result,10,36)}' < /dev/null
+awk 'BEGIN{a=strtonum(ENVIRON["WATER"],36)|b=strtonum(ENVIRON["STIR"],36)|result=a+b|printf "%s\n",conv(result,10,36)}' <<< ""
