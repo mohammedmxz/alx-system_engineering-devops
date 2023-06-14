@@ -1,2 +1,3 @@
 #!/bin/bash
-result=$(printf "%s\n%s" "$WATER" "$STIR" | awk '{ sum += $0 } END { printf "%s\n", sum }' | tr '0123456789' 'bestchol')
+printf "%s\n" "$WATER" "$STIR" | awk '{sum += strtonum($0)} END {printf "%s\n", sum}'
+
