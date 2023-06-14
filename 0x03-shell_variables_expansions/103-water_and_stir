@@ -1,3 +1,2 @@
 #!/bin/bash
 printf "%s\n" "$WATER" "$STIR" | awk '{sum += strtonum($0)} END {printf "%s\n", sum}'
-
