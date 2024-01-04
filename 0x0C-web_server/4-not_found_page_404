@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Set up Nginx on a server
+# Set up Nginx on a server with a custom 404 page
 
 apt-get -y update
 apt-get -y install nginx
@@ -8,16 +8,20 @@ echo "Hello World!" > /var/www/html/index.html
 echo "Ceci n'est pas une page" > /var/www/html/404.html
 
 {
-	echo "server {"
-	echo "	listen 80 default_server;"
-	echo "	listen [::]:80 default_server;"
-	echo '	server_name "";'
-	echo '	root /var/www/html;'
-	echo '	error_page 404 /404.html;'
-	echo '	location /redirect_me {'
-	echo '		return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;'
-	echo '	}'
-	echo '}'
+    echo "server {"
+    echo "	listen 80 default_server;"
+    echo "	listen [::]:80 default_server;"
+    echo '	server_name "";'
+    echo '	root /var/www/html;'
+    echo '	error_page 404 /404.html;'
+    echo '	location /redirect_me {'
+    echo '		return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;'
+    echo '	}'
+    echo "	location = /404.html {"
+    echo "		internal;"
+    echo "	}"
+    echo '}'
 } > /etc/nginx/sites-available/default
 
 service nginx restart
+
