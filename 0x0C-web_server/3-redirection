@@ -1,19 +1,23 @@
 #!/usr/bin/env bash
-# Set up Nginx on a server
 
-apt-get -y update
-apt-get -y install nginx
-echo "Hello World!" > /var/www/html/index.nginx-debian.html
+# Configure Nginx redirection
+
+# Set redirection URL
+REDIRECT_URL="https://www.youtube.com/watch?v=QH2-TGUlwu4"
+
+# Configure Nginx redirection
 {
-	echo "server {"
-	echo "	listen 80 default_server;"
-	echo "	listen [::]:80 default_server;"
-	echo '	server_name _;'
-	echo '	root /var/www/html;'
-	echo '	index index.html index.nginx-debian.htm;'
-	echo '	location /redirect_me {'
-	echo '		return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;'
-	echo '	}'
-	echo '}'
-} > /etc/nginx/sites-available/default 
-sudo service nginx restart
+    echo "server {"
+    echo "	listen 80 default_server;"
+    echo "	listen [::]:80 default_server;"
+    echo '	server_name "";'
+    echo '	root /var/www/html;'
+    echo "	location /redirect_me {"
+    echo "		return 301 $REDIRECT_URL;"
+    echo "	}"
+    echo '}'
+} > /etc/nginx/sites-available/default
+
+# Restart Nginx
+service nginx restart
+
