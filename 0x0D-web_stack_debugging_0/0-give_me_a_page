@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Fix a web server that is not serving a web
+# page correctly
+
+CONFIGFILE="/etc/apache2/sites-available/localhost.conf"
+
+{
+	echo "<VirtualHost *:8080>";
+	echo "  ServerName localhost";
+	echo "  DocumentRoot /var/www/html";
+	echo "</VirtualHost>";
+} > ${CONFIGFILE}
+
+a2ensite localhost
+service apache2 start
