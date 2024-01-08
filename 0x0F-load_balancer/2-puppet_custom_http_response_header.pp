@@ -1,37 +1,32 @@
-# Install Nginx package
+# Configures a brand new Ubuntu
+
+$config = 'server {
+	listen 80;
+	listen [::]:80;
+	server_name _ "";
+	add_header X-Served-By "$hostname";
+}'
+
+exec { 'apt-get update':
+  command => '/usr/bin/apt-get update',
+}
+
+exec { 'apt-get upgrade -y':
+  command => '/usr/bin/apt-get upgrade -y',
+}
+
 package { 'nginx':
-  ensure => installed,
+  ensure   => installed,
+  name     => 'nginx',
+  provider => apt,
 }
 
-# Replace Nginx default configuration
-file { '/etc/nginx/nginx.conf':
+file { '/etc/nginx/sites-available/default':
   ensure  => file,
-  source  => 'puppet:///modules/nginx/nginx.conf',
-  require => Package['nginx'],
-  notify  => Service['nginx'],
+  path    => '/etc/nginx/sites-available/default',
+  content => $config,
 }
 
-# Create a custom Nginx configuration file
-file { '/etc/nginx/sites-enabled/default':
-  ensure  => file,
-  content => 'server {
-                listen 80 default_server;
-                listen [::]:80 default_server;
-                server_name _;
-                location / {
-                  add_header X-Served-By $hostname;
-                  root /var/www/html;
-                  index index.html;
-                }
-              }',
-  require => Package['nginx'],
-  notify  => Service['nginx'],
-}
-
-# Restart Nginx service when configuration changes
-service { 'nginx':
-  ensure    => running,
-  enable    => true,
-  require   => Package['nginx'],
-  subscribe => File['/etc/nginx/nginx.conf', '/etc/nginx/sites-enabled/default'],
+exec { 'service nginx restart':
+  command => '/usr/sbin/service nginx restart',
 }
