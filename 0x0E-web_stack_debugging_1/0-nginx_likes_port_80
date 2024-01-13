@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Fix issue on a web server
+sed -i s/8080/80/g /etc/nginx/sites-avaliable/default
+sudo rm /etc/nginx/sites-enabled/default
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+sudo service nginx restart

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Fix issue on a web server
+sed -i "s/8080/80/" /etc/nginx/sites-enabled/default
+sudo service nginx restart
+echo "" > /run/nginx.pid
