@@ -7,17 +7,6 @@ A comprehensive exploration of what happens behind the scenes when you type "htt
 
 Ever wondered what happens behind the scenes when you type a URL into your browser? It's more than just pressing Enter; it's a journey through the intricacies of the internet's backbone.
 
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Key Concepts Covered](#key-concepts-covered)
-- [Requirements](#requirements)
-- [How to Use](#how-to-use)
-- [Directory Structure](#directory-structure)
-- [Blog Post](#blog-post)
-- [Author](#author)
-- [License](#license)
-
 ## Introduction
 
 This project dives into the infrastructure side of web development, explaining the intricate steps involved in the process when a user types "https://www.google.com" and presses Enter. The focus is on key concepts such as DNS requests, TCP/IP, firewalls, HTTPS/SSL, load balancing, web servers, application servers, and databases.
