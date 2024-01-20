@@ -1,7 +1,6 @@
-# Project Titlei
+# What happens when you type google.com in your browser and press Enter
 
 A comprehensive exploration of what happens behind the scenes when you type "https://www.google.com" in your browser and press Enter.
-Certainly! Below is a complete `README.md` file that you can use for your GitHub repository. You can copy and paste this content into a file named `README.md` in your project's root directory.
 
 ```markdown
 # What Happens When You Type "https://www.google.com" in Your Browser and Press Enter
@@ -58,7 +57,7 @@ Read the blog post to gain insights into the infrastructure behind web browsing.
 
 ## Blog Post
 
-Read the blog post on [LinkedIn](#https://www.linkedin.com/posts/mohammed-moustafa-5949a6183_google-activity-7154583362475634688-kxwS?utm_source=share&utm_medium=member_desktop).
+Read the blog post on [LinkedIn](https://www.linkedin.com/posts/mohammed-moustafa-5949a6183_google-activity-7154583362475634688-kxwS?utm_source=share&utm_medium=member_desktop).
 
 ## Author
 
