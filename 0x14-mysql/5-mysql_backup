@@ -1,13 +1,8 @@
 #!/usr/bin/env bash
-# Creates MySQL backup
-
-DAY="$(date +%d)"
-MONTH="$(date +%m)"
-YEAR="$(date +%Y)"
-DUMP_FILE="backup.sql"
-COMPRESSED_FILE="${DAY}-${MONTH}-${YEAR}.tar.gz"
-USER="root"
-PASSWORD="$1"
-
-mysqldump --all-databases -u "$USER" --password="$PASSWORD" > "$DUMP_FILE"
-tar -czf "$COMPRESSED_FILE" "$DUMP_FILE"
+# backup and compress my databases
+mysqldump --all-databases -u root --password="$1" > backup.sql
+day=$(date +"%d")
+month=$(date +"%m")
+year=$(date +"%Y")
+file_name="$day-$month-$year.tar.gz"
+tar -czvf "$file_name" backup.sql
